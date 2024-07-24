@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Reserva de Salas</title>
+</head>
+
+<body>
+    <div id="botao-superior-direito">
+        <button onclick="history.back()">VOLTAR</button>
+    </div>
+    <div class="container">
+        <div class="content reserva-sala">
+            <h2>Reservar Sala</h2>
+            <form id="form-reserva-sala">
+                <label for="sala">Selecione a Sala:</label>
+                <select id="sala" required></select>
+                <label for="data-reserva">Data da Reserva:</label>
+                <input type="date" id="data-reserva" required>
+                <label for="hora-inicio">Hora de Início:</label>
+                <input type="time" id="hora-inicio" required>
+                <label for="hora-fim">Hora de Término:</label>
+                <input type="time" id="hora-final" required>
+                <button type="submit">Reservar Sala</button>
+            </form>
+        </div>
+        <div class="content visualizar-remover">
+            <h2>Reservas</h2>
+            <ul id="lista-reservas"></ul>
+        </div>
+    </div>
+    </div>
+
+    <script src="scriptSala.js"></script>
+</body>
+
+</html>
