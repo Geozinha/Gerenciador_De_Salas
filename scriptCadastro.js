@@ -26,18 +26,17 @@ class cadastro {
     }
     toJson() {
         return JSON.stringify(this);
-        
+
     }
 
     static fromJson(dadosJson) {
         try {
-            return Object.assign(this.prototype.constructor(), JSON.parse(dadosJson))
-          } catch (err) {
-            console.log("PROCURA MAIS O ERRO")
-          }
+            const dados = JSON.parse(dadosJson);
+            return Object.assign(new this(), dados);
+        } catch (error) {
+            throw new Error(`Erro ao converter JSON: ${error.message}`);
+        }
     }
-
-      
 }
 
 class cadastroProfessor extends cadastro {
@@ -51,6 +50,14 @@ class cadastroProfessor extends cadastro {
     setIdentificador(novoIdentificador) {
         this.identificador = novoIdentificador;
     }
+    toJson() {
+        return JSON.stringify(this);
+    }
+    static fromJson(dadosJson) {
+        const dados = JSON.parse(dadosJson);
+        const cadastroBase = super.fromJson(dadosJson);
+        return new cadastroProfessor(cadastroBase.nome, cadastroBase.email, cadastroBase.senha, dados.identificador);
+    }
 }
 class cadastroAluno extends cadastro {
     constructor(nome, email, senha, turma) {
@@ -62,16 +69,29 @@ class cadastroAluno extends cadastro {
     }
     setTurma(novoTurma) {
         this.turma = novoTurma;
-    }   
+    }
+    toJson() {
+        return JSON.stringify(this);
+    }
+    static fromJson(dadosJson) {
+        const dados = JSON.parse(dadosJson);
+        const cadastroBase = super.fromJson(dadosJson);
+        return new cadastroAluno(cadastroBase.nome, cadastroBase.email, cadastroBase.senha, dados.turma);
+    }
 }
-
 document.addEventListener('DOMContentLoaded', function () {
     const loginBotaoAluno = document.getElementById('loginBotaoAluno');
     const formularioAluno = document.getElementById('formAluno');
     loginBotaoAluno.addEventListener('click', (e) => {
         checkInputs();
     })
+    const loginBotaoProfessor = document.getElementById('loginBotaoProf');
+    const formularioProfessor = document.getElementById('formProfessor');
+    loginBotaoProfessor.addEventListener('click', (e) => {
+        checkInputs();
+    })
 
+    //Parte Aluno
     const nomeAluno = document.getElementById('username');
     const turmaAluno = document.getElementById('turma');
     const emailAluno = document.getElementById('email');
@@ -85,139 +105,105 @@ document.addEventListener('DOMContentLoaded', function () {
         const senhaValue = senhaAluno.value;
 
         if (nomeValue === '') {
-            setErrorFor(nomeAluno, "O nome completo é obrigatório")
-        }
-        else {
-            setSucessoFor(nomeAluno)
-        }
-        //email
-        if (emailValue === '') {
-            setErrorFor(emailAluno, "O email completo é obrigatório")
-        }
-        else if (!checkEmail(emailValue)) {
-            setErrorFor(emailAluno, "Por favor, insira um email válido.");
-        }
-        else {
-            setSucessoFor(emailAluno)
-        }
-        //senha
-        if (senhaValue === "") {
-            setErrorFor(password, "A senha é obrigatória.");
-        } else if (senhaValue.length < 6) {
-            setErrorFor(password, "A senha precisa ter no mínimo 8 caracteres.");
+            setErrorFor(nomeAluno, "O nome completo é obrigatório");
+            formIsValid = false;
         } else {
-            setSucessoFor(password);
+            setSucessoFor(nomeAluno);
+        }
+
+        if (emailValue === '') {
+            setErrorFor(emailAluno, "O email é obrigatório");
+
+        } else if (!checkEmail(emailValue)) {
+            setErrorFor(emailAluno, "Por favor, insira um email válido.");
+        } else {
+            setSucessoFor(emailAluno);
+        }
+        if (senhaValue === '') {
+            setErrorFor(senhaAluno, "A senha é obrigatória.");
+        } else if (senhaValue.length < 6) {
+            setErrorFor(senhaAluno, "A senha precisa ter no mínimo 6 caracteres.");
+
+        } else {
+            setSucessoFor(senhaAluno);
         }
 
         const formControle = formularioAluno.querySelectorAll('form');
 
         const formIsValid = [...formControle].every(formControle => {
-            return (formControle.className === 'campo sucess');
+            return (formControle.className === 'campo preenchido com sucesso');
         })
-
         if (formIsValid) {
-            let aluno = new cadastro(nomeValue, turmaValue, emailValue, senhaValue);
+            let aluno = new cadastroAluno(nomeValue, emailValue, senhaValue, turmaValue);
             const listaCadastroAluno = JSON.parse(localStorage.getItem('listaCadastroAluno') || '[]');
             let alunoJSON = aluno.toJson();
-            let novoAluno = cadastro.fromJson(alunoJSON);
+            let novoAluno = cadastroAluno.fromJson(alunoJSON);
             listaCadastroAluno.push(novoAluno);
             localStorage.setItem('listaCadastroAluno', JSON.stringify(listaCadastroAluno));
         }
-    }
-    function setErrorFor(input, mensagem) {
-        const formcontrol = input.parentElement; //vai retorna a div que é pai do input // form-control é a class da div
-        const small = formcontrol.querySelector('small');
 
-        small.innerText = mensagem;
+        //Parte Professor
 
-        formcontrol.className = 'form-control error';
-    }
-    function setSucessoFor(input) {
-        const formcontrol = input.parentElement; //vai retorna a div que é pai do input
-
-        formcontrol.className = 'form-control sucess';
-    }
+        const emailProfessor = document.getElementById('emailProfessor');
+        const identificadorProfessor = document.getElementById('identificadorProfessor');
+        const nomeProfessor = document.getElementById('usernameProfessor');
+        const senhaProfessor = document.getElementById('passwordProfessor');
 
 
-    function checkEmail(email) {
-        return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
-            email
-        );
-    }
-});
-
-
-document.addEventListener('DOMContentLoaded', function () {
-    const loginBotaoProfessor = document.getElementById('loginBotaoProf');
-    const formularioProfessor = document.getElementById('formProfessor');
-    loginBotaoProfessor.addEventListener('click', function (event) {
-        checkInputs();
-    });
-
-    const emailProfessor = document.getElementById('emailProfessor');
-    const identificadorProfessor = document.getElementById('identificadorProfessor');
-    const nomeProfessor = document.getElementById('usernameProfessor');
-    const senhaProfessor = document.getElementById('passwordProfessor');
-
-    function checkInputs() {
         const nomeProfessorValue = nomeProfessor.value;
         const identificadorValue = identificadorProfessor.value;
         const emailProfessorValue = emailProfessor.value;
         const senhaProfessorValue = senhaProfessor.value;
 
-        let formIsValid = true;
-
         if (nomeProfessorValue === '') {
             setErrorFor(nomeProfessor, "O nome completo é obrigatório");
-            formIsValid = false;
         } else {
             setSucessoFor(nomeProfessor);
         }
 
         if (emailProfessorValue === '') {
             setErrorFor(emailProfessor, "O email é obrigatório");
-            formIsValid = false;
         } else if (!checkEmail(emailProfessorValue)) {
             setErrorFor(emailProfessor, "Por favor, insira um email válido.");
-            formIsValid = false;
         } else {
             setSucessoFor(emailProfessor);
         }
 
         if (senhaProfessorValue === '') {
             setErrorFor(senhaProfessor, "A senha é obrigatória.");
-            formIsValid = false;
         } else if (senhaProfessorValue.length < 6) {
             setErrorFor(senhaProfessor, "A senha precisa ter no mínimo 6 caracteres.");
-            formIsValid = false;
         } else {
             setSucessoFor(senhaProfessor);
         }
+        const formrControle = formularioProfessor.querySelectorAll('form');
 
-        if (formIsValid) {
-            let professor = new cadastro(nomeProfessorValue, identificadorValue, emailProfessorValue, senhaProfessorValue);
+        const formEValid = [...formrControle].every(formControle => {
+            return (formControle.className === 'campo preenchido com sucesso');
+        })
+        if (formEValid) {
+            let professor = new cadastroProfessor(nomeProfessorValue, identificadorValue, emailProfessorValue, senhaProfessorValue);
             const cadastroProfessorLista = JSON.parse(localStorage.getItem('cadastroProfessorLista') || '[]');
             cadastroProfessorLista.push(professor);
             localStorage.setItem('cadastroProfessorLista', JSON.stringify(cadastroProfessorLista));
 
             console.log("O formulário está válido!");
+
         }
     }
-    
-
     function setErrorFor(input, mensagem) {
-        const formControl = input.parentElement;
-        const small = formControl.querySelector('small');
+        const formcontrol = input.parentElement; //vai retorna a div que é pai do input // form-control é a class da div
+        const small = formcontrol.querySelector('small');
         small.innerText = mensagem;
-        formControl.className = 'form-control error';
+        formcontrol.className = 'form-control error';
     }
-
     function setSucessoFor(input) {
-        const formControl = input.parentElement;
-        formControl.className = 'form-control success';
+        const formcontrol = input.parentElement; //vai retorna a div que é pai do input
+        formcontrol.className = 'form-control sucess';
     }
-
     function checkEmail(email) {
-        return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
+        return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+            email
+        );
     }
 });
