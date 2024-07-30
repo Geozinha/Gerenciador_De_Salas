@@ -7,34 +7,32 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <title>Login Reserva de Salas</title>
-    <script src="scriptTelainicial.js" defer></script>
 </head>
 
 <body>
     <div id="botao-superior-direito">
         <button id="loginBotaoAdmin">ADMIN</button>
       </div>
-    <div class="container" id="container">
-        <div class="forma-container cadastrar">
+    <div class="container" id="container" class="form" id="form">
+        <div class="forma-container cadastrar" class="form-control">
             <form id="formAluno">
                 <h1>Login Aluno!</h1>
                 <span>Use seu e-mail para se registrar: </span>
-                <input type="text" id="username" placeholder="Nome" required>
-                <input type="text" id="turma" placeholder="Turma">
-                <input type="email" id="email" placeholder="E-mail">
-                <input type="password" id="password" placeholder="Senha">
-                <button id="loginBotaoAluno" >Login</button>
+                <label for="emailAluno"><input type="email" id="emailAluno" placeholder="E-mail" required></label>
+                <label for="senhaAluno"> <input type="password" id="senhaAluno" placeholder="Senha"></label>
+                <i id="verSenhaAluno" class="fa fa-eye" aria-hidden="true"></i>
+                <a href="forgot-password.html">Esqueceu a senha?</a>
+                <button id="loginBotaoAluno">Login</button>
             </form>
         </div>
         <div class="forma-container login">
             <form id="formProfessor">
                 <h1>Login Professor!</h1>
                 <span>Use seu e-mail para realizar o login</span>
-                <input type="number" id="identificadorProfessor" placeholder="Identificador" required>
-                <input type="text" id="usernameProfessor" placeholder="Nome" >
-                <input type="email" id="emailProfessor" placeholder="E-mail">
-                <input type="password" id="passwordProfessor" placeholder="Senha">
-                <a href="#">Esqueceu a senha?</a>
+                <label for="emailProfessor"><input type="email" id="emailProfessor" placeholder="E-mail"></label>
+                <label for="senhaProfessor"><input type="password" id="senhaProfessor" placeholder="Senha"></label>
+                <i id="verSenhaProfessor" class="fa fa-eye" aria-hidden="true"></i>                
+                <a href="forgot-password.html">Esqueceu a senha?</a>               
                 <button id="loginBotaoProf">Login</button>
             </form>
            
