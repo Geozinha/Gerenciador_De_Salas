@@ -12,30 +12,45 @@
 <body>
     <div id="botao-superior-direito">
         <button id="loginBotaoAdmin">ADMIN</button>
-      </div>
+    </div>
     <div class="container" id="container" class="form" id="form">
         <div class="forma-container cadastrar" class="form-control">
             <form id="formAluno">
                 <h1>Login Aluno!</h1>
                 <span>Use seu e-mail para se registrar: </span>
-                <label for="emailAluno"><input type="email" id="emailAluno" placeholder="E-mail" required></label>
-                <label for="senhaAluno"> <input type="password" id="senhaAluno" placeholder="Senha"></label>
-                <i id="verSenhaAluno" class="fa fa-eye" aria-hidden="true"></i>
+                <label id="labelEmailAluno" for="emailAluno">
+                    <input type="email" id="emailAluno" placeholder="E-mail" required>
+                    <span id="emailAlunoValido"></span>
+                </label>
+                <label id="labelSenhaAluno" for="senhaAluno">
+                    <input type="password" id="senhaAluno" placeholder="Senha">
+                    <span id="senhaAlunoValido"></span>
+                </label>
+                <i id="verSenhaAluno" class="fa fa-eye-slash" aria-hidden="true"></i>
                 <a href="forgot-password.html">Esqueceu a senha?</a>
                 <button id="loginBotaoAluno">Login</button>
+                <div id="msgError" class="error-message"></div>
+                <div id="msgSuccess" class="success-message"></div>
             </form>
         </div>
         <div class="forma-container login">
             <form id="formProfessor">
                 <h1>Login Professor!</h1>
                 <span>Use seu e-mail para realizar o login</span>
-                <label for="emailProfessor"><input type="email" id="emailProfessor" placeholder="E-mail"></label>
-                <label for="senhaProfessor"><input type="password" id="senhaProfessor" placeholder="Senha"></label>
-                <i id="verSenhaProfessor" class="fa fa-eye" aria-hidden="true"></i>                
-                <a href="forgot-password.html">Esqueceu a senha?</a>               
+                <label id="labelEmailProfessor" for="emailProfessor">
+                    <input type="email" id="emailProfessor" placeholder="E-mail">
+                    <span id="emailProfessorValido"></span>
+                </label>
+                <label id="labelSenhaProfessor" for="senhaProfessor">
+                    <input type="password" id="senhaProfessor" placeholder="Senha">
+                    <span id="senhaProfessorValido"></span>
+                </label>
+                <i id="verSenhaProfessor" class="fa fa-eye-slash" aria-hidden="true"></i>
+                <a href="forgot-password.html">Esqueceu a senha?</a>
                 <button id="loginBotaoProf">Login</button>
+                <div id="msgError" class="error-message"></div>
+                <div id="msgSuccess" class="success-message"></div>
             </form>
-           
         </div>
         <div class="alternar-container">
             <div class="alternar">
@@ -53,6 +68,7 @@
         </div>
     </div>
     <script src="scriptCadastro.js"></script>
+    <script src="scriptBotoesTelainicial.js"></script>
 </body>
 
 </html>
