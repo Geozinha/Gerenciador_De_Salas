@@ -24,13 +24,6 @@ class login {
       throw new Error('Novo email inválido!');
     }
   }
-  toJson() {
-    return JSON.stringify(this);
-  }
-  static fromJson(dadosJson) {
-    const dados = JSON.parse(dadosJson);
-    return new login(dados.email, dados.senha);
-  }
 }
 
 const emailAluno = document.querySelector('#emailAluno');
@@ -102,29 +95,9 @@ senhaProfessor.addEventListener('keyup', () => {
 
 function loginAluno(e) {
   e.preventDefault();
-
   if (emailAlunoIsvalid && senhaAlunoIsvalid) {
-    if (typeof localStorage !== 'undefined') {
-      try {
-        let usuario = new login(emailAluno.value, senhaAluno.value);
-        const listaUsuario = JSON.parse(
-          localStorage.getItem('listaUsuario') || '[]',
-        );
-        let usuarioJson = usuario.toJson();
-        let novoUsuario = login.fromJson(usuarioJson);
-        listaUsuario.push(novoUsuario);
-        localStorage.setItem('listaUsuario', JSON.stringify(listaUsuario));
-        msgSuccess.textContent = 'Login realizado com sucesso!';
-
-        redirect('/ReservaAluno');
-      } catch (error) {
-        console.error('Erro ao salvar dados no localStorage:', error);
-        msgError.textContent = 'Erro ao realizar login!';
-      }
-    } else {
-      console.error('LocalStorage não suportado pelo navegador!');
-      msgError.textContent = 'Seu navegador não suporta localStorage!';
-    }
+    msgSuccess.textContent = 'Login realizado com sucesso!';
+    redirect('/ReservaAluno');
   } else {
     msgError.textContent = 'Email ou senha inválidos!';
   }
@@ -132,29 +105,8 @@ function loginAluno(e) {
 
 function loginProfessor(e) {
   e.preventDefault();
-
   if (emailProfessorIsvalid && senhaProfessorIsvalid) {
-    if (typeof localStorage !== 'undefined') {
-      try {
-        let usuario = new login(emailProfessor.value, senhaProfessor.value);
-        const listaUsuario = JSON.parse(
-          localStorage.getItem('listaUsuario') || '[]',
-        );
-        let usuarioJson = usuario.toJson();
-        let novoUsuario = login.fromJson(usuarioJson);
-        listaUsuario.push(novoUsuario);
-        localStorage.setItem('listaUsuario', JSON.stringify(listaUsuario));
-        msgSuccess.textContent = 'Login realizado com sucesso!';
-
-        redirect('/ReservaProfessor');
-      } catch (error) {
-        console.error('Erro ao salvar dados no localStorage:', error);
-        msgError.textContent = 'Erro ao realizar login!';
-      }
-    } else {
-      console.error('LocalStorage não suportado pelo navegador!');
-      msgError.textContent = 'Seu navegador não suporta localStorage!';
-    }
+    redirect('/ReservaProfessor');
   } else {
     msgError.textContent = 'Email ou senha inválidos!';
   }

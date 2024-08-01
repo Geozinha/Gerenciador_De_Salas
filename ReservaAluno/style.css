@@ -16,8 +16,7 @@ body {
   background-position: center;
   background-repeat: no-repeat;
 }
-
-#descricao-reserva {
+#descricao-sala {
   height: 50px;
   padding: 0px;
   border-radius: 5px;
@@ -89,12 +88,12 @@ body {
   background-color: #136b1b;
 }
 
-.visualizar-reservas ul {
+.visualizar-remover ul {
   list-style-type: none;
   padding: 0;
 }
 
-.visualizar-reservas {
+.visualizar-remover .reserva {
   background-color: #fff;
   padding: 15px;
   margin-bottom: 10px;
@@ -103,12 +102,12 @@ body {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.visualizar-reservas .reserva span {
+.visualizar-remover .reserva span {
   display: block;
   margin-bottom: 8px;
 }
 
-.visualizar-reservas .reserva button {
+.visualizar-remover .reserva button {
   background-color: #e74c3c;
   color: #fff;
   border: none;
@@ -119,8 +118,8 @@ body {
   transition: background-color 0.3s ease;
 }
 
-.visualizar-reservas .reserva button:hover {
-  background-color: #39130f;
+.visualizar-remover .reserva button:hover {
+  background-color: #c0392b;
 }
 #botao-superior-direito {
   position: fixed;
