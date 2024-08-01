@@ -9,8 +9,7 @@
 body {
   position: relative;
   min-height: 100vh;
-  background:
-    linear-gradient(
+  background: linear-gradient(
       to right,
       rgba(226, 226, 226, 0.5),
       rgba(201, 255, 208, 0.4)
@@ -24,20 +23,15 @@ body {
   flex-direction: column;
   z-index: 1;
 }
-.fa-eye {
-  position: absolute;
-  top: 57%;
-  right: 25%;
-  transform: translateY(-50%);
-  cursor: pointer;
-  color: #1b7c21;
-  font-size: 16px;
+
+*:has(> .fa-eye-slash, .fa-eye) {
+  position: relative;
 }
-.fa-eye-slash {
+
+.fa-eye-custom {
   position: absolute;
-  top: 57%;
-  right: 25%;
-  transform: translateY(-50%);
+  top: 25%;
+  right: 15%;
   cursor: pointer;
   color: #1b7c21;
   font-size: 16px;

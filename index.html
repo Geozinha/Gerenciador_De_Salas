@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -25,7 +25,7 @@
               id="emailAluno"
               placeholder="E-mail"
               autofocus
-              autocomplete="true"
+              autocomplete="on"
               required />
             <span id="emailAlunoValido"></span>
           </label>
@@ -35,9 +35,14 @@
               id="senhaAluno"
               placeholder="Senha"
               required />
-            <span id="senhaAlunoValido"></span>
+            <i
+              id="verSenhaAluno"
+              class="fa fa-eye-slash fa-eye-custom"
+              aria-hidden="true"></i>
+            <span id="senhaAlunoValido" style="visibility: collapse"
+              >Senha inválida!</span
+            >
           </label>
-          <i id="verSenhaAluno" class="fa fa-eye-slash" aria-hidden="true"></i>
           <a href="forgot-password.html">Esqueceu a senha?</a>
           <button id="loginBotaoAluno">Login</button>
           <div id="msgError" class="error-message"></div>
@@ -54,7 +59,7 @@
               id="emailProfessor"
               placeholder="E-mail"
               autofocus
-              autocomplete="true"
+              autocomplete="on"
               required />
             <span id="emailProfessorValido"></span>
           </label>
@@ -64,12 +69,14 @@
               id="senhaProfessor"
               placeholder="Senha"
               required />
-            <span id="senhaProfessorValido"></span>
+            <i
+              id="verSenhaProfessor"
+              class="fa fa-eye fa-eye-custom"
+              aria-hidden="true"></i>
+            <span id="senhaProfessorValido" style="visibility: collapse"
+              >Senha inválida!</span
+            >
           </label>
-          <i
-            id="verSenhaProfessor"
-            class="fa fa-eye-slash"
-            aria-hidden="true"></i>
           <a href="forgot-password.html">Esqueceu a senha?</a>
           <button id="loginBotaoProf">Login</button>
           <div id="msgError" class="error-message"></div>

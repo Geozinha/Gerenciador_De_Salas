@@ -77,6 +77,8 @@ emailProfessor.addEventListener('keyup', () => {
 });
 
 senhaAluno.addEventListener('keyup', () => {
+  senhaAlunoValido.style.visibility = 'visible';
+
   if (senhaAluno.value.length < 6) {
     senhaAlunoValido.textContent = 'Senha inválida!';
     senhaAlunoIsvalid = false;
@@ -87,6 +89,8 @@ senhaAluno.addEventListener('keyup', () => {
 });
 
 senhaProfessor.addEventListener('keyup', () => {
+  senhaProfessorValido.style.visibility = 'visible';
+
   if (senhaProfessor.value.length < 6) {
     senhaProfessorValido.textContent = 'Senha inválida!';
     senhaProfessorIsvalid = false;
