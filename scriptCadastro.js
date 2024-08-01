@@ -43,11 +43,11 @@ const emailProfessorValido = document.querySelector('#emailProfessorValido');
 const senhaProfessor = document.querySelector('#senhaProfessor');
 const senhaProfessorValido = document.querySelector('#senhaProfessorValido');
 
-const emailAlunoIsvalid = false;
-const emailProfessorIsvalid = false;
+let emailAlunoIsvalid = false;
+let emailProfessorIsvalid = false;
 
-const senhaAlunoIsvalid = false;
-const senhaProfessorIsvalid = false;
+let senhaAlunoIsvalid = false;
+let senhaProfessorIsvalid = false;
 
 let msgError = document.querySelector('#msgError');
 let msgSuccess = document.querySelector('#msgSuccess');
@@ -55,7 +55,7 @@ let msgSuccess = document.querySelector('#msgSuccess');
 emailAluno.addEventListener('keyup', () => {
   const emailValue = emailAluno.value;
   const isValid = validarEmail(emailValue);
-  if (emailValue == isValid) {
+  if (!isValid) {
     emailAlunoValido.textContent = 'Email inválido!';
     emailAlunoIsvalid = false;
   } else {
@@ -67,7 +67,7 @@ emailAluno.addEventListener('keyup', () => {
 emailProfessor.addEventListener('keyup', () => {
   const emailValue = emailProfessor.value;
   const isValid = validarEmail(emailValue);
-  if (emailValue == isValid) {
+  if (!isValid) {
     emailProfessorValido.textContent = 'Email inválido!';
     emailProfessorIsvalid = false;
   } else {
@@ -92,11 +92,13 @@ senhaProfessor.addEventListener('keyup', () => {
     senhaProfessorIsvalid = false;
   } else {
     senhaProfessorValido.textContent = 'Senha válida!';
-    senhaProfessorIsvalid = false;
+    senhaProfessorIsvalid = true;
   }
 });
 
-function loginAluno() {
+function loginAluno(e) {
+  e.preventDefault();
+
   if (emailAlunoIsvalid && senhaAlunoIsvalid) {
     if (typeof localStorage !== 'undefined') {
       try {
@@ -109,6 +111,8 @@ function loginAluno() {
         listaUsuario.push(novoUsuario);
         localStorage.setItem('listaUsuario', JSON.stringify(listaUsuario));
         msgSuccess.textContent = 'Login realizado com sucesso!';
+
+        redirect('/ReservaAluno');
       } catch (error) {
         console.error('Erro ao salvar dados no localStorage:', error);
         msgError.textContent = 'Erro ao realizar login!';
@@ -122,7 +126,9 @@ function loginAluno() {
   }
 }
 
-function loginProfessor() {
+function loginProfessor(e) {
+  e.preventDefault();
+
   if (emailProfessorIsvalid && senhaProfessorIsvalid) {
     if (typeof localStorage !== 'undefined') {
       try {
@@ -135,6 +141,8 @@ function loginProfessor() {
         listaUsuario.push(novoUsuario);
         localStorage.setItem('listaUsuario', JSON.stringify(listaUsuario));
         msgSuccess.textContent = 'Login realizado com sucesso!';
+
+        redirect('/ReservaProfessor');
       } catch (error) {
         console.error('Erro ao salvar dados no localStorage:', error);
         msgError.textContent = 'Erro ao realizar login!';
@@ -148,7 +156,18 @@ function loginProfessor() {
   }
 }
 
+function redirect(url) {
+  setTimeout(() => {
+    window.location.replace(
+      new URL(url, `${window.location.protocol}//${window.location.host}`),
+    );
+  }, 250);
+}
+
 function validarEmail(email) {
-  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return regex.test(email);
+  return email
+    .toLowerCase()
+    .match(
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+    );
 }

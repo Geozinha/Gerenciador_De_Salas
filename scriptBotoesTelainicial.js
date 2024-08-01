@@ -40,34 +40,12 @@ visualizarSenhaProfessor.addEventListener('click', () => {
 
 registerBtn.addEventListener('click', () => {
   container.classList.add('active');
+  document.getElementById('emailProfessor').focus();
 });
 
 loginBtn.addEventListener('click', () => {
   container.classList.remove('active');
-});
-
-loginBotaoProf.addEventListener('click', function (event) {
-  event.preventDefault();
-  const email = emailProfessor.value;
-  const password = senhaProfessor.value;
-
-  if (email.trim() === '' || password.trim() === '') {
-    msgError.textContent('Por favor, preencha todos os campos.');
-    return;
-  }
-  window.location.href = './ReservaProfessor/index.html';
-});
-
-loginBotaoAluno.addEventListener('click', function (event) {
-  event.preventDefault();
-  const email = emailAluno.value;
-  const password = senhaAluno.value;
-
-  if (email.trim() === '' || password.trim() === '') {
-    msgError.textContent('Por favor, preencha todos os campos.');
-    return;
-  }
-  window.location.href = './ReservaAluno/index.html';
+  document.getElementById('emailAluno').focus();
 });
 
 loginBotaoAdmin.addEventListener('click', function (event) {

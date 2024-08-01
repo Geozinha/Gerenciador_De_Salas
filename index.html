@@ -16,11 +16,17 @@
     </div>
     <div class="container" id="container" class="form" id="form">
       <div class="forma-container cadastrar" class="form-control">
-        <form id="formAluno">
+        <form id="formAluno" onsubmit="loginAluno(event)">
           <h1>Login Aluno!</h1>
           <span>Use seu e-mail para se registrar: </span>
           <label id="labelEmailAluno" for="emailAluno">
-            <input type="email" id="emailAluno" placeholder="E-mail" required />
+            <input
+              type="email"
+              id="emailAluno"
+              placeholder="E-mail"
+              autofocus
+              autocomplete="true"
+              required />
             <span id="emailAlunoValido"></span>
           </label>
           <label id="labelSenhaAluno" for="senhaAluno">
@@ -39,15 +45,25 @@
         </form>
       </div>
       <div class="forma-container login">
-        <form id="formProfessor">
+        <form id="formProfessor" onsubmit="loginProfessor(event)">
           <h1>Login Professor!</h1>
           <span>Use seu e-mail para realizar o login</span>
           <label id="labelEmailProfessor" for="emailProfessor">
-            <input type="email" id="emailProfessor" placeholder="E-mail" />
+            <input
+              type="email"
+              id="emailProfessor"
+              placeholder="E-mail"
+              autofocus
+              autocomplete="true"
+              required />
             <span id="emailProfessorValido"></span>
           </label>
           <label id="labelSenhaProfessor" for="senhaProfessor">
-            <input type="password" id="senhaProfessor" placeholder="Senha" />
+            <input
+              type="password"
+              id="senhaProfessor"
+              placeholder="Senha"
+              required />
             <span id="senhaProfessorValido"></span>
           </label>
           <i
