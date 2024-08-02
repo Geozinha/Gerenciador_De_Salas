@@ -1,9 +1,7 @@
-import {validarEmail} from './scriptCadastro';
-const emailAdmin = document.querySelector("#emailAdmin");
-const senhaAdmin = document.querySelector("#senhaAdmin");
-const emailAdminValido = document.querySelector("#emailAdminValido");
-const senhaAdminValido = document.querySelector("#senhaAdminValido");
-
+const emailAdmin = document.querySelector('#emailAdmin');
+const senhaAdmin = document.querySelector('#senhaAdmin');
+const emailAdminValido = document.querySelector('#emailAdminValido');
+const senhaAdminValido = document.querySelector('#senhaAdminValido');
 
 let emailAdminIsvalid = false;
 let senhaAdminIsvalid = false;
@@ -43,8 +41,8 @@ function loginAdmin(e) {
   } else {
     msgError.textContent = 'Email ou senha inválidos!';
   }
+
+  validarEmail('flçasdjfalçsdf');
 }
-loginAdmin();
 
-visualizarSenha('senhaAdmin', 'verSenhaAdmin');
-
+// visualizarSenha('senhaAdmin', 'verSenhaAdmin');

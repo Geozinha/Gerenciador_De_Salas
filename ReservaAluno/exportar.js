@@ -1,4 +1,4 @@
-export class CadastrarSala {
+class CadastrarSala {
   constructor(id, nomeSala, descricaoSala, quantidadeAlunos, predio) {
     this.id = id;
     this.nomeSala = nomeSala;

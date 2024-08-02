@@ -1,41 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Login Administrador</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-  <link rel="stylesheet" href="style.css">
-  <title>Login Administrador</title>
-</head>
-
-<body>
-  <div id="botao-superior-direito">
-    <button onclick="history.back()">VOLTAR</button>
-  </div>
-  <div class="container" id="container" class="form" id="form">
-    <div class="forma-container cadastrar" class="form-control">
-      <form id="formAdmin" onsubmit="BotaoAdmin(event)">
-        <h1>Login Administrador!</h1>
-        <span>Use seu identificador para realizar o login</span>
-        <label id="labelEmailAdmin" for="emailAdmin">
-          <input type="email" id="emailAdmin" placeholder="E-mail" autofocus autocomplete="on" required />
-          <span id="emailAdminValido"></span>
-        </label>
-        <label id="labelSenhaAdmin" for="senhaAdmin">
-          <input type="password" id="senhaAdmin" placeholder="Senha" required />
-          <i id="verSenhaAdmin" class="fa fa-eye-slash fa-eye-custom" aria-hidden="true"></i>
-          <span id="senhaAdminValido" style="visibility: collapse">Senha inválida!</span>
-        </label>
-        <a href="forgot-password.html">Esqueceu a senha?</a>
-        <button>Login</button>
-        <div id="msgError" class="error-message"></div>
-        <div id="msgSuccess" class="success-message"></div>
-      </form>
+  <body>
+    <div id="botao-superior-direito">
+      <button onclick="history.back()">VOLTAR</button>
     </div>
-  </div>
-  <script src="scriptAdmin.js" defer></script>
-  
-</body>
-
+    <div class="container" id="container" class="form" id="form">
+      <div class="forma-container cadastrar" class="form-control">
+        <form id="formAdmin" onsubmit="loginAdmin(event)">
+          <h1>Login Administrador!</h1>
+          <span>Use seu identificador para realizar o login</span>
+          <label id="labelEmailAdmin" for="emailAdmin">
+            <input
+              type="email"
+              id="emailAdmin"
+              placeholder="E-mail"
+              autofocus
+              autocomplete="on"
+              required />
+            <span id="emailAdminValido"></span>
+          </label>
+          <label id="labelSenhaAdmin" for="senhaAdmin">
+            <input
+              type="password"
+              id="senhaAdmin"
+              placeholder="Senha"
+              required />
+            <i
+              id="verSenhaAdmin"
+              class="fa fa-eye-slash fa-eye-custom"
+              aria-hidden="true"></i>
+            <span id="senhaAdminValido" style="visibility: collapse"
+              >Senha inválida!</span
+            >
+          </label>
+          <a href="forgot-password.html">Esqueceu a senha?</a>
+          <button>Login</button>
+          <div id="msgError" class="error-message"></div>
+          <div id="msgSuccess" class="success-message"></div>
+        </form>
+      </div>
+    </div>
+    <script src="../funcoes.js"></script>
+    <script src="scriptAdmin.js" defer></script>
+  </body>
 </html>
