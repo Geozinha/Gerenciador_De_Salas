@@ -57,17 +57,20 @@ emailAluno.addEventListener('keyup', () => {
   }
 });
 
-emailProfessor.addEventListener('keyup', () => {
-  const emailValue = emailProfessor.value;
-  const isValid = validarEmail(emailValue);
-  if (!isValid) {
-    emailProfessorValido.textContent = 'Email inválido!';
-    emailProfessorIsvalid = false;
-  } else {
-    emailProfessorValido.textContent = 'Email válido!';
-    emailProfessorIsvalid = true;
-  }
-});
+function VerificarEmaul(){
+  emailProfessor.addEventListener('keyup'
+    const emailValue = emailProfessor.value;
+    const isValid = validarEmail(emailValue);
+    if (!isValid) {
+      emailProfessorValido.textContent = 'Email inválido!';
+      emailProfessorIsvalid = false;
+    } else {
+      emailProfessorValido.textContent = 'Email válido!';
+      emailProfessorIsvalid = true;
+    }
+  );
+}
+
 
 senhaAluno.addEventListener('keyup', () => {
   senhaAlunoValido.style.visibility = 'visible';
