@@ -2,9 +2,9 @@ const container = document.getElementById('container');
 const registerBtn = document.getElementById('register');
 const loginBtn = document.getElementById('login');
 
-function visualizarSenha(inputId, iconId) {
-  const inputSenha = document.getElementById(inputId);
-  const iconeOlho = document.getElementById(iconId);
+function visualizarSenha(inputSenha, iconeOlho) {
+  const inputSenha = document.getElementById(inputSenha);
+  const iconeOlho = document.getElementById(iconeOlho);
 
   iconeOlho.addEventListener('click', () => {
     const isSenhaVisivel = inputSenha.type === 'text';
