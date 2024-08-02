@@ -111,6 +111,3 @@ function loginProfessor(e) {
     msgError.textContent = 'Email ou senha inválidos!';
   }
 }
-
-// loginAluno();
-// loginProfessor();
