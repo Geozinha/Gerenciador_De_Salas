@@ -1,17 +1,15 @@
-BotaoAdmin.addEventListener('click', function (event) {
-  event.preventDefault();
-  window.location.href = './telaAdmin.html';
-});
-import { login } from "./scriptCadastro";
+import {validarEmail} from './scriptCadastro';
+const emailAdmin = document.querySelector("#emailAdmin");
+const senhaAdmin = document.querySelector("#senhaAdmin");
+const emailAdminValido = document.querySelector("#emailAdminValido");
+const senhaAdminValido = document.querySelector("#senhaAdminValido");
 
-
-const emailAdmin = document.querySelector('#emailAdmin');
-const emailAdminValido = document.querySelector('#emailAdminValido');
-const senhaAdmin = document.querySelector('#senhaAdmin');
-const senhaAdminValido = document.querySelector('#senhaAdministradorValido');
 
 let emailAdminIsvalid = false;
 let senhaAdminIsvalid = false;
+
+let msgError = document.querySelector('#msgError');
+let msgSuccess = document.querySelector('#msgSuccess');
 
 emailAdmin.addEventListener('keyup', () => {
   const emailValue = emailAdmin.value;
@@ -46,19 +44,7 @@ function loginAdmin(e) {
     msgError.textContent = 'Email ou senha inválidos!';
   }
 }
+loginAdmin();
 
-function redirect(url) {
-  setTimeout(() => {
-    window.location.replace(
-      new URL(url, `${window.location.protocol}//${window.location.host}`),
-    );
-  }, 250);
-}
+visualizarSenha('senhaAdmin', 'verSenhaAdmin');
 
-function validarEmail(email) {
-  return email
-    .toLowerCase()
-    .match(
-      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-    );
-}

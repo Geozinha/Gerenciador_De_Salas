@@ -1,4 +1,4 @@
-class login {
+export class login {
   constructor(email, senha) {
     this.senha = senha;
     this.email = email;
@@ -127,3 +127,7 @@ function validarEmail(email) {
       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
     );
 }
+
+loginAluno();
+loginProfessor();
+

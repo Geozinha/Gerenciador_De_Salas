@@ -1,104 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
-    <link rel="stylesheet" href="style.css" />
-    <title>Login Reserva de Salas</title>
-  </head>
 
-  <body>
-    <div id="botao-superior-direito">
-      <button id="loginBotaoAdmin">ADMIN</button>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Login Reserva de Salas</title>
+</head>
+
+<body>
+  <div id="botao-superior-direito">
+    <button id="loginBotaoAdmin">ADMIN</button>
+  </div>
+  <div class="container" id="container" class="form" id="form">
+    <div class="forma-container cadastrar" class="form-control">
+      <form id="formAluno" onsubmit="loginAluno(event)">
+        <h1>Login Aluno!</h1>
+        <span>Use seu e-mail para se registrar: </span>
+        <label id="labelEmailAluno" for="emailAluno">
+          <input type="email" id="emailAluno" placeholder="E-mail" autofocus autocomplete="on" required />
+          <span id="emailAlunoValido"></span>
+        </label>
+        <label id="labelSenhaAluno" for="senhaAluno">
+          <input type="password" id="senhaAluno" placeholder="Senha" required />
+          <i id="verSenhaAluno" class="fa fa-eye-slash fa-eye-custom" aria-hidden="true"></i>
+          <span id="senhaAlunoValido" style="visibility: collapse">Senha inválida!</span>
+        </label>
+        <a href="forgot-password.html">Esqueceu a senha?</a>
+        <button>Login</button>
+        <div id="msgError" class="error-message"></div>
+        <div id="msgSuccess" class="success-message"></div>
+      </form>
     </div>
-    <div class="container" id="container" class="form" id="form">
-      <div class="forma-container cadastrar" class="form-control">
-        <form id="formAluno" onsubmit="loginAluno(event)">
-          <h1>Login Aluno!</h1>
-          <span>Use seu e-mail para se registrar: </span>
-          <label id="labelEmailAluno" for="emailAluno">
-            <input
-              type="email"
-              id="emailAluno"
-              placeholder="E-mail"
-              autofocus
-              autocomplete="on"
-              required />
-            <span id="emailAlunoValido"></span>
-          </label>
-          <label id="labelSenhaAluno" for="senhaAluno">
-            <input
-              type="password"
-              id="senhaAluno"
-              placeholder="Senha"
-              required />
-            <i
-              id="verSenhaAluno"
-              class="fa fa-eye-slash fa-eye-custom"
-              aria-hidden="true"></i>
-            <span id="senhaAlunoValido" style="visibility: collapse"
-              >Senha inválida!</span
-            >
-          </label>
-          <a href="forgot-password.html">Esqueceu a senha?</a>
-          <button id="loginBotaoAluno">Login</button>
-          <div id="msgError" class="error-message"></div>
-          <div id="msgSuccess" class="success-message"></div>
-        </form>
-      </div>
-      <div class="forma-container login">
-        <form id="formProfessor" onsubmit="loginProfessor(event)">
-          <h1>Login Professor!</h1>
-          <span>Use seu e-mail para realizar o login</span>
-          <label id="labelEmailProfessor" for="emailProfessor">
-            <input
-              type="email"
-              id="emailProfessor"
-              placeholder="E-mail"
-              autofocus
-              autocomplete="on"
-              required />
-            <span id="emailProfessorValido"></span>
-          </label>
-          <label id="labelSenhaProfessor" for="senhaProfessor">
-            <input
-              type="password"
-              id="senhaProfessor"
-              placeholder="Senha"
-              required />
-            <i
-              id="verSenhaProfessor"
-              class="fa fa-eye-slash fa-eye-custom"
-              aria-hidden="true"></i>
-            <span id="senhaProfessorValido" style="visibility: collapse"
-              >Senha inválida!</span
-            >
-          </label>
-          <a href="forgot-password.html">Esqueceu a senha?</a>
-          <button id="loginBotaoProf">Login</button>
-          <div id="msgError" class="error-message"></div>
-          <div id="msgSuccess" class="success-message"></div>
-        </form>
-      </div>
-      <div class="alternar-container">
-        <div class="alternar">
-          <div class="alternar-painel alternar-esquerda">
-            <h1>Aluno(a)?</h1>
-            <p>Acesse utilizando os seus dados!</p>
-            <button class="hidden" id="login">Clique Aqui</button>
-          </div>
-          <div class="alternar-painel alternar-direita">
-            <h1>Professor(a)?</h1>
-            <p>Acesse utilizando os seus dados!</p>
-            <button class="hidden" id="register">Clique Aqui</button>
-          </div>
+    <div class="forma-container login">
+      <form id="formProfessor" onsubmit="loginProfessor(event)">
+        <h1>Login Professor!</h1>
+        <span>Use seu e-mail para realizar o login</span>
+        <label id="labelEmailProfessor" for="emailProfessor">
+          <input type="email" id="emailProfessor" placeholder="E-mail" autofocus autocomplete="on" required />
+          <span id="emailProfessorValido"></span>
+        </label>
+        <label id="labelSenhaProfessor" for="senhaProfessor">
+          <input type="password" id="senhaProfessor" placeholder="Senha" required />
+          <i id="verSenhaProfessor" class="fa fa-eye-slash fa-eye-custom" aria-hidden="true"></i>
+          <span id="senhaProfessorValido" style="visibility: collapse">Senha inválida!</span>
+        </label>
+        <a href="forgot-password.html">Esqueceu a senha?</a>
+        <button>Login</button>
+        <div id="msgError" class="error-message"></div>
+        <div id="msgSuccess" class="success-message"></div>
+      </form>
+    </div>
+    <div class="alternar-container">
+      <div class="alternar">
+        <div class="alternar-painel alternar-esquerda">
+          <h1>Aluno(a)?</h1>
+          <p>Acesse utilizando os seus dados!</p>
+          <button class="hidden" id="login">Clique Aqui</button>
+        </div>
+        <div class="alternar-painel alternar-direita">
+          <h1>Professor(a)?</h1>
+          <p>Acesse utilizando os seus dados!</p>
+          <button class="hidden" id="register">Clique Aqui</button>
         </div>
       </div>
     </div>
-    <script src="scriptCadastro.js"></script>
-    <script src="scriptBotoesTelainicial.js"></script>
-  </body>
+  </div>
+  <script src="scriptCadastro.js" defer></script>
+  <script src="scriptBotoesTelainicial.js"></script>
+</body>
+
 </html>
