@@ -37,12 +37,10 @@ function loginAdmin(e) {
   e.preventDefault();
   if (emailAdminIsvalid && senhaAdminIsvalid) {
     msgSuccess.textContent = 'Login realizado com sucesso!';
-    redirect('/GerenciamentoAdmin');
+    redirect('./telaAdmin');
   } else {
     msgError.textContent = 'Email ou senha inválidos!';
   }
-
-  validarEmail('flçasdjfalçsdf');
 }
 
-
+visualizarSenha('senhaAdmin', 'verSenhaAdmin');
