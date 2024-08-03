@@ -1,0 +1,16 @@
+{
+  "hosting": {
+    "public": "Gerenciador_de_Salas",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

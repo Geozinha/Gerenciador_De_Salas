@@ -57,8 +57,8 @@ emailAluno.addEventListener('keyup', () => {
   }
 });
 
-function VerificarEmaul(){
-  emailProfessor.addEventListener('keyup'
+
+  emailProfessor.addEventListener('keyup', () => {
     const emailValue = emailProfessor.value;
     const isValid = validarEmail(emailValue);
     if (!isValid) {
@@ -68,8 +68,7 @@ function VerificarEmaul(){
       emailProfessorValido.textContent = 'Email válido!';
       emailProfessorIsvalid = true;
     }
-  );
-}
+  });
 
 
 senhaAluno.addEventListener('keyup', () => {
