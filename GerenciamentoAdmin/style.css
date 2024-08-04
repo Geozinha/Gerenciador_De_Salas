@@ -194,11 +194,13 @@ body {
 .content2 input,
 .content2 textarea,
 .content2 select {
+  text-align: center;
   padding: 10px;
   margin-bottom: 15px;
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 14px;
+  width: 500px
 }
 
 .content2 button {

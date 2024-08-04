@@ -25,18 +25,22 @@
                 <input type="text" id="nome-sala" required>
                 <label for="descricao-sala">Descrição:</label>
                 <textarea class="tamanho" id="descricao-sala" rows="4"></textarea>
-                <label for="qtd-alunos">Quantidade de Alunos:</label>
-                <label><input type="number" id="capacidade" required>
-                </label>
-                <br>
+                <label for="capacidade">Quantidade de Alunos:</label>
+                <label><input type="number" id="capacidade" required></label>
+                <label for="tipoSala">Tipo de Sala:</label>
+                <select id="">
+                    <option value="0"></option>
+                    <option value="A">Para alunos</option>
+                    <option value="P">Para professores</option>
+                </select>
                 <label for="predio">Prédio:</label>
-                <br>
                 <select id="predio" required>
                     <option value="1">Prédio 1</option>
                     <option value="2">Prédio 2</option>
                 </select>
-                <br>
                 <button  id="buttonCadastrar">Cadastrar Sala</button>
+                <div id="msgError" class="error-message"></div>
+                <div id="msgSuccess" class="success-message"></div>
             </form>
         </div>
     </div>

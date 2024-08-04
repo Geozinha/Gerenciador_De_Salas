@@ -154,26 +154,3 @@ document.getElementById('lista-reservas').addEventListener('click', e => {
     exibirReservas();
   }
 });
-
-document.addEventListener('DOMContentLoaded', function () {
-  const salas = [
-    {
-      id: 1,
-      nome: 'Sala para estudos',
-      descricao: 'Biblioteca',
-      qtdAlunos: 10,
-      predio: '1',
-    },
-    {
-      id: 2,
-      nome: 'Sala de descanso',
-      descricao: 'Sala para descansar',
-      qtdAlunos: 20,
-      predio: '2',
-    },
-  ];
-  salas.forEach(adicionarSalaAoFormulario);
-
-  gerenciador.carregarReserva();
-  exibirReservas();
-});
