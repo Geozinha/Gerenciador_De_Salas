@@ -1,50 +1,52 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
     <title>Administrador</title>
-
-<body>
+  </head>
+  <body>
     <div id="botao-superior-direito">
-        <button onclick="history.back()">VOLTAR</button>
+      <button onclick="history.back()">VOLTAR</button>
     </div>
     <div class="container2">
-        <div class="content2 reserva-sala">     
-            <h2>Salas Cadastradas</h2>
-            <ul id="salas-cadastradas">
-            </ul>
-        </div>
-        <div class="content2 cadastro-sala">
-            <h2>Cadastrar Sala</h2>
-            <form id="form-cadastro-sala">
-                <label for="nome-sala">Nome da Sala:</label>
-                <input type="text" id="nome-sala" required>
-                <label for="descricao-sala">Descrição:</label>
-                <textarea class="tamanho" id="descricao-sala" rows="4"></textarea>
-                <label for="capacidade">Quantidade de Alunos:</label>
-                <label><input type="number" id="capacidade" required></label>
-                <label for="tipoSala">Tipo de Sala:</label>
-                <select id="">
-                    <option value="0"></option>
-                    <option value="A">Para alunos</option>
-                    <option value="P">Para professores</option>
-                </select>
-                <label for="predio">Prédio:</label>
-                <select id="predio" required>
-                    <option value="1">Prédio 1</option>
-                    <option value="2">Prédio 2</option>
-                </select>
-                <button  id="buttonCadastrar">Cadastrar Sala</button>
-                <div id="msgError" class="error-message"></div>
-                <div id="msgSuccess" class="success-message"></div>
-            </form>
-        </div>
+      <div class="content2 reserva-sala">
+        <h2>Salas Cadastradas</h2>
+        <ul id="lista-reservas"></ul>
+      </div>
+      <div class="content2 cadastro-sala">
+        <h2>Cadastrar Sala</h2>
+        <form id="form-cadastro-sala">
+          <label for="nomeSala">Nome da Sala:</label>
+          <input type="text" id="nomeSala" required />
+          <label for="descricao-sala">Descrição:</label>
+          <textarea class="tamanho" id="descricao-sala" rows="4"></textarea>
+          <label for="capacidade">Quantidade de Alunos:</label>
+          <label for="capacidade"
+            ><input type="number" id="capacidade" required
+          /></label>
+          <label for="tipoSala">Tipo de Sala:</label>
+          <select id="tipoSala" required>
+            <option value=""></option>
+            <option value="Para alunos">Para alunos</option>
+            <option value="Para professores">Para professores</option>
+          </select>
+          <label for="predio">Prédio:</label>
+          <select id="predio" required>
+            <option value="Prédio 1">Prédio 1</option>
+            <option value="Prédio 2">Prédio 2</option>
+          </select>
+          <button>Cadastrar Sala</button>
+          <div id="msgError" class="error-message"></div>
+          <div id="msgSuccess" class="success-message"></div>
+        </form>
+      </div>
     </div>
     <script src="scriptCadastrar.js"></script>
-</body>
-
+  </body>
 </html>

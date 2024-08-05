@@ -108,7 +108,7 @@ function adicionarReserva(reserva) {
   document.getElementById('form-reserva-sala').reset();
 }
 
-document.getElementById('form-reserva-sala').addEventListener('submit', e => {
+document.getElementById('form-reserva-sala').addEventListener('submit', (e) => {
   e.preventDefault();
 
   const opcaoSalaValue = document.getElementById('sala').value;

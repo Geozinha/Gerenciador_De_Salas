@@ -1,40 +1,50 @@
-class cadastrarSala {
-  constructor(nomeSala, descricao, tipoSala, predio) {
-    this.nomeSala = nomeSala;
+class Sala {
+  constructor(id, nome, descricao, capacidade, tipoSala, predio) {
+    this.id = id;
+    this.nome = nome;
     this.descricao = descricao;
+    this.capacidade = capacidade;
     this.tipoSala = tipoSala;
     this.predio = predio;
   }
-  setNomeSala(novoNomeSala) {
-    this.nomeSala = novoNomeSala;
-  }
-  setDescricao(novaDescricao) {
-    this.descricao = novaDescricao;
-  }
-  setTipoSala(novaTipoSala) {
-    this.tipoSala = novaTipoSala;
-  }
-  setPredio(novoPredio) {
-    this.predio = novoPredio;
-  }
 }
 
-function registrarSala() {
-  const nomeSala = document.querySelector('#nomeSala').value; 
-  const descricao = document.querySelector('#descricao').value;
-  const tipoSala = document.querySelector('#tipoSala').value; 
-  const predio = document.querySelector('#predio').value;
-  
-  const msgError = document.querySelector('#msgError');
-  const msgSuccess = document.querySelector('#msgSuccess');
+document.getElementById("form-cadastro-sala").addEventListener("submit", function (event) {
+    event.preventDefault();
 
-  if (nomeSala === '' || descricao === '' || tipoSala === '' || predio === '') {
-    msgError.textContent = 'Preencha todos os campos!';
-    msgSuccess.textContent = '';
-    return;
-  }
-  else {
-    msgError.textContent = '';
-    msgSuccess.textContent = 'Sala cadastrada com sucesso!';
-  }
+    const nome = document.getElementById("nomeSala").value;
+    const descricao = document.getElementById("descricao-sala").value;
+    const capacidade = document.getElementById("capacidade").value;
+    const tipoSala = document.getElementById("tipoSala").value;
+    const predio = document.getElementById("predio").value;
+
+    const id = Date.now();
+    const novaSala = new Sala(
+      id,
+      nome,
+      descricao,
+      capacidade,
+      tipoSala,
+      predio
+    );
+
+    adicionarSalaNaLista(novaSala);
+    limparFormulario();
+  });
+
+function adicionarSalaNaLista(sala) {
+  const listaReservas = document.getElementById("lista-reservas");
+  const ul = document.createElement("ul");
+  ul.innerHTML = 
+  `<span><strong>Sala:</strong> ${sala.nome}</span><br>
+  <span><strong>Descrição:</strong> ${sala.descricao}</span><br>
+  <span><strong>Capacidade:</strong> ${sala.capacidade}</span><br>
+  <span><strong>Tipo de sala:</strong> ${sala.tipoSala}</span><br>
+  <span><strong>Prédio:</strong> ${sala.predio}</span><br>
+  <button class="btn-remover-reserva" data-reserva-id="${sala.id}">Remover</button>`;
+  listaReservas.appendChild(ul);
+}
+
+function limparFormulario() {
+  document.getElementById("form-cadastro-sala").reset();
 }
