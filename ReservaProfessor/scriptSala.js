@@ -36,19 +36,6 @@ class ReservarSala {
   setID(novoID) {
     this.id = novoID;
   }
-  toJson() {
-    return JSON.stringify(this);
-  }
-
-  static fromJson(dadosJson) {
-    return new ReservarSala(
-      dadosJson.id,
-      dadosJson.opcaoSala,
-      dadosJson.dataReserva,
-      dadosJson.horaInicio,
-      dadosJson.horaFinal,
-    );
-  }
 }
 
 const opcaoSala = document.getElementById('sala');
@@ -61,33 +48,15 @@ const formularioReservaSala = document.getElementById('form-reserva-sala');
 const listaReserva = document.getElementById('lista-reservas');
 
 class gerenciadorSala {
-  CadastrarSala = [];
   ReservarSala = [];
-
-  adicionarSala(sala) {
-    this.CadastrarSala.push(sala);
-    this.salvarSala();
-  }
 
   adicionarReserva(reserva) {
     this.ReservarSala.push(reserva);
     this.salvarReserva();
   }
 
-  getSalaporID(id) {
-    return this.CadastrarSala.find(sala => sala.id === id);
-  }
-
   getReservaporID(id) {
     return this.ReservarSala.find(reserva => reserva.id === id);
-  }
-
-  removerSala(id) {
-    const index = this.CadastrarSala.findIndex(sala => sala.id === id);
-    if (index !== -1) {
-      this.CadastrarSala.splice(index, 1);
-      this.salvarSala;
-    }
   }
 
   removerReserva(id) {
@@ -97,35 +66,12 @@ class gerenciadorSala {
       this.salvarReserva;
     }
   }
-
-  carregarSala() {
-    const salasJson = localStorage.getItem('salas') || '[]';
-    if (salasJson) {
-      const salas = JSON.parse(salasJson);
-      salas.forEach(salaInfo => {
-        const novaSala = CadastrarSala.fromJson(salaInfo);
-        this.adicionarSala(novaSala);
-      });
-    }
-  }
-
-  salvarSala() {
-    localStorage.setItem('salas', JSON.stringify(this.CadastrarSala));
-  }
-
   carregarReserva() {
-    const reservaJson = localStorage.getItem('reservas') || '[]';
-    if (reservaJson) {
-      const reservas = JSON.parse(reservaJson);
-      reservas.forEach(reservaInfo => {
-        const novaReserva = ReservarSala.fromJson(reservaInfo);
-        this.adicionarReserva(novaReserva);
-      });
+    
     }
-  }
 
   salvarReserva() {
-    localStorage.setItem('reservas', JSON.stringify(this.ReservarSala));
+    
   }
 }
 
