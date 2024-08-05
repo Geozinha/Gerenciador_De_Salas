@@ -9,8 +9,8 @@ class Sala {
   }
 }
 
-document.getElementById("form-cadastro-sala").addEventListener("submit", function (event) {
-    event.preventDefault();
+document.getElementById("form-cadastro-sala").addEventListener("submit", (e)=>  {
+    e.preventDefault();
 
     const nome = document.getElementById("nomeSala").value;
     const descricao = document.getElementById("descricao-sala").value;
@@ -28,11 +28,11 @@ document.getElementById("form-cadastro-sala").addEventListener("submit", functio
       predio
     );
 
-    adicionarSalaNaLista(novaSala);
+    exibirSalaCadastrada(novaSala);
     limparFormulario();
   });
 
-function adicionarSalaNaLista(sala) {
+function exibirSalaCadastrada(sala) {
   const listaReservas = document.getElementById("lista-reservas");
   const ul = document.createElement("ul");
   ul.innerHTML = 
