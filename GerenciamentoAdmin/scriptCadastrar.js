@@ -13,7 +13,7 @@ document.getElementById("form-cadastro-sala").addEventListener("submit", (e)=>  
     e.preventDefault();
 
     const nome = document.getElementById("nomeSala").value;
-    const descricao = document.getElementById("descricao-sala").value;
+    const descricao = document.getElementById("descricaoSala").value;
     const capacidade = document.getElementById("capacidade").value;
     const tipoSala = document.getElementById("tipoSala").value;
     const predio = document.getElementById("predio").value;
