@@ -5,17 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
     <link rel="stylesheet" href="style.css" />
     <title>Login Reserva de Salas</title>
   </head>
-
   <body>
     <div id="botao-superior-direito">
       <button id="loginBotaoAdmin">ADMIN</button>
     </div>
-    <div class="container" id="container" class="form" id="form">
-      <div class="forma-container cadastrar" class="form-control">
+    <div class="container" id="container">
+      <div class="forma-container cadastrar">
         <form id="formAluno" onsubmit="loginAluno(event)">
           <h1>Login Aluno!</h1>
           <span>Use seu e-mail para se registrar: </span>
@@ -26,7 +26,8 @@
               placeholder="E-mail"
               autofocus
               autocomplete="on"
-              required />
+              required
+            />
             <span id="emailAlunoValido"></span>
           </label>
           <label id="labelSenhaAluno" for="senhaAluno">
@@ -34,11 +35,13 @@
               type="password"
               id="senhaAluno"
               placeholder="Senha"
-              required />
+              required
+            />
             <i
               id="verSenhaAluno"
               class="fa fa-eye-slash fa-eye-custom"
-              aria-hidden="true"></i>
+              aria-hidden="true"
+            ></i>
             <span id="senhaAlunoValido" style="visibility: collapse"
               >Senha inválida!</span
             >
@@ -60,7 +63,8 @@
               placeholder="E-mail"
               autofocus
               autocomplete="on"
-              required />
+              required
+            />
             <span id="emailProfessorValido"></span>
           </label>
           <label id="labelSenhaProfessor" for="senhaProfessor">
@@ -68,11 +72,13 @@
               type="password"
               id="senhaProfessor"
               placeholder="Senha"
-              required />
+              required
+            />
             <i
               id="verSenhaProfessor"
               class="fa fa-eye-slash fa-eye-custom"
-              aria-hidden="true"></i>
+              aria-hidden="true"
+            ></i>
             <span id="senhaProfessorValido" style="visibility: collapse"
               >Senha inválida!</span
             >
@@ -98,9 +104,9 @@
         </div>
       </div>
     </div>
-    <script src="../Gerenciador_De_Salas/lib/funcoes.js"></script>
-    <script src="../Gerenciador_De_Salas/lib/redirect.js"></script>
-    <script src="../Gerenciador_De_Salas/telaInicial/scriptBotoesTelainicial.js" defer></script>
-    <script src="../Gerenciador_De_Salas/telaInicial/scriptCadastro.js"></script>
+
+    <script type="module" src="scriptFirebase.js" defer></script>
+    <script type="module" src="../Gerenciador_De_Salas/telaInicial/scriptBotoesTelainicial.js"></script>
+    <script type="module" src="../Gerenciador_De_Salas/telaInicial/scriptCadastro.js" defer></script>
   </body>
 </html>

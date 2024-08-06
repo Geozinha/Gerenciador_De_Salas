@@ -15,7 +15,7 @@ loginBtn.addEventListener('click', () => {
 
 loginBotaoAdmin.addEventListener('click', function (event) {
   event.preventDefault();
-  window.location.href = './gerenciamentoAdmin/telaAdmin.html';
+  window.location.href = './GerenciamentoAdmin/telaAdmin.html';
 });
 
 

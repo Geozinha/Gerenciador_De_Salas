@@ -41,12 +41,15 @@
             <option value="Prédio 1">Prédio 1</option>
             <option value="Prédio 2">Prédio 2</option>
           </select>
-          <button>Cadastrar Sala</button>
+          <button type="submit" id="registrarSalaBtn">Cadastrar Sala</button>
           <div id="msgError" class="error-message"></div>
           <div id="msgSuccess" class="success-message"></div>
         </form>
       </div>
     </div>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js" defer></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js" defer></script>
+    <script type="module" src="../scriptFireBase.js" defer></script>
     <script src="scriptCadastrar.js"></script>
   </body>
 </html>
