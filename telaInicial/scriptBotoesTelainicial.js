@@ -15,8 +15,9 @@ loginBtn.addEventListener('click', () => {
 
 loginBotaoAdmin.addEventListener('click', function (event) {
   event.preventDefault();
-  window.location.href = './GerenciamentoAdmin/loginAdmin.html';
+  window.location.href = './gerenciamentoAdmin/telaAdmin.html';
 });
+
 
 visualizarSenha('senhaAluno', 'verSenhaAluno');
 visualizarSenha('senhaProfessor', 'verSenhaProfessor');
