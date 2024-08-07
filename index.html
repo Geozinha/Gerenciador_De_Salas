@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-    />
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
     <link rel="stylesheet" href="style.css" />
     <title>Login Reserva de Salas</title>
   </head>
@@ -26,8 +25,7 @@
               placeholder="E-mail"
               autofocus
               autocomplete="on"
-              required
-            />
+              required />
             <span id="emailAlunoValido"></span>
           </label>
           <label id="labelSenhaAluno" for="senhaAluno">
@@ -35,13 +33,11 @@
               type="password"
               id="senhaAluno"
               placeholder="Senha"
-              required
-            />
+              required />
             <i
               id="verSenhaAluno"
               class="fa fa-eye-slash fa-eye-custom"
-              aria-hidden="true"
-            ></i>
+              aria-hidden="true"></i>
             <span id="senhaAlunoValido" style="visibility: collapse"
               >Senha inválida!</span
             >
@@ -63,8 +59,7 @@
               placeholder="E-mail"
               autofocus
               autocomplete="on"
-              required
-            />
+              required />
             <span id="emailProfessorValido"></span>
           </label>
           <label id="labelSenhaProfessor" for="senhaProfessor">
@@ -72,13 +67,11 @@
               type="password"
               id="senhaProfessor"
               placeholder="Senha"
-              required
-            />
+              required />
             <i
               id="verSenhaProfessor"
               class="fa fa-eye-slash fa-eye-custom"
-              aria-hidden="true"
-            ></i>
+              aria-hidden="true"></i>
             <span id="senhaProfessorValido" style="visibility: collapse"
               >Senha inválida!</span
             >
@@ -104,9 +97,12 @@
         </div>
       </div>
     </div>
-
-    <script type="module" src="scriptFirebase.js" defer></script>
-    <script type="module" src="scriptBotoesTelainicial.js"></script>
-    <script type="module" src="scriptCadastro.js" defer></script>
+    <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-auth-compat.js"></script>
+    <script src="scriptFirebase.js" defer></script>
+    <script src="redirect.js"></script>
+    <script src="funcoes.js"></script>
+    <script src="scriptBotoesTelainicial.js"></script>
+    <script src="scriptCadastro.js" ></script>
   </body>
 </html>
