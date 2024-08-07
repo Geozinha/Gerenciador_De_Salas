@@ -97,12 +97,11 @@ senhaProfessor.addEventListener('keyup', () => {
 
 function loginAluno(e) {
   e.preventDefault();
-  if (emailAlunoIsvalid && senhaAlunoIsvalid) {
-    msgSuccess.textContent = 'Login realizado com sucesso!';
-    redirect('/ReservaAluno');
-  } else {
-    msgError.textContent = 'Email ou senha inválidos!';
-  }
+  firebase.auth().signInWithEmailAndPassword().then(response => {
+    console.log("sucesso", response);
+  }).catch(error => {
+    console.log("erro", error);
+  });
 }
 
 function loginProfessor(e) {
