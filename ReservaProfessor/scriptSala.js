@@ -66,13 +66,7 @@ class gerenciadorSala {
       this.salvarReserva;
     }
   }
-  carregarReserva() {
-    
-    }
 
-  salvarReserva() {
-    
-  }
 }
 
 const gerenciador = new gerenciadorSala();

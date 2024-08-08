@@ -33,8 +33,9 @@
           <label for="tipoSala">Tipo de Sala:</label>
           <select id="tipoSala" required>
             <option value=""></option>
-            <option value="Para alunos">Para alunos</option>
-            <option value="Para professores">Para professores</option>
+            <option value="Para descanso">Para descanso</option>
+            <option value="Laboratório">Laboratório</option>
+            <option value="Para estudo">Para estudo</option>
           </select>
           <label for="predio">Prédio:</label>
           <select id="predio" required>
@@ -48,8 +49,8 @@
       </div>
     </div>
     <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-auth-compat.js"></script>
-    <script src="scriptFirebase.js" defer></script>
+    <script src="firestore.js"></script>
+    <script src="../scriptFirebase.js" defer></script>
     <script src="scriptCadastrar.js"></script>
   </body>
 </html>
