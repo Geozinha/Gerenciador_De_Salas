@@ -35,12 +35,17 @@ senhaAdmin.addEventListener('keyup', () => {
 
 function loginAdmin(e) {
   e.preventDefault();
-  if (emailAdminIsvalid && senhaAdminIsvalid) {
-    msgSuccess.textContent = 'Login realizado com sucesso!';
-    redirect('./telaAdmin');
-  } else {
-    msgError.textContent = 'Email ou senha inválidos!';
-  }
+  const email = emailAdmin.value;
+    const senha = senhaAdmin.value;
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(email, senha)
+      .then(response => {
+        window.location.href = 'loginAdmin.html';
+      })
+      .catch(error => {
+        msgError.textContent = error;
+      });
 }
 
 visualizarSenha('senhaAdmin', 'verSenhaAdmin');

@@ -1,62 +1,27 @@
-class login {
-  constructor(email, senha) {
-    this.senha = senha;
-    this.email = email;
+  const emailAluno = document.querySelector('#emailAluno');
+  const emailAlunoValido = document.querySelector('#emailAlunoValido');
+  const senhaAluno = document.querySelector('#senhaAluno');
+  const senhaAlunoValido = document.querySelector('#senhaAlunoValido');
 
-    if (!validarEmail(email)) {
-      throw new Error('Email inválido!');
-    }
-  }
-  getSenha() {
-    return this.senha;
-  }
-  getEmail() {
-    return this.email;
-  }
+  const emailProfessor = document.querySelector('#emailProfessor');
+  const emailProfessorValido = document.querySelector('#emailProfessorValido');
+  const senhaProfessor = document.querySelector('#senhaProfessor');
+  const senhaProfessorValido = document.querySelector('#senhaProfessorValido');
 
-  setSenha(novaSenha) {
-    this.senha = novaSenha;
-  }
-  setEmail(novoEmail) {
-    if (validarEmail(novoEmail)) {
-      this.email = novoEmail;
+
+  let msgError = document.querySelector('#msgError');
+
+  emailAluno.addEventListener('keyup', () => {
+    const emailValue = emailAluno.value;
+    const isValid = validarEmail(emailValue);
+    if (!isValid) {
+      emailAlunoValido.textContent = 'Email inválido!';
+      emailAlunoIsvalid = false;
     } else {
-      throw new Error('Novo email inválido!');
+      emailAlunoValido.textContent = 'Email válido!';
+      emailAlunoIsvalid = true;
     }
-  }
-}
-
-const emailAluno = document.querySelector('#emailAluno');
-const emailAlunoValido = document.querySelector('#emailAlunoValido');
-const senhaAluno = document.querySelector('#senhaAluno');
-const senhaAlunoValido = document.querySelector('#senhaAlunoValido');
-
-const emailProfessor = document.querySelector('#emailProfessor');
-const emailProfessorValido = document.querySelector('#emailProfessorValido');
-const senhaProfessor = document.querySelector('#senhaProfessor');
-const senhaProfessorValido = document.querySelector('#senhaProfessorValido');
-
-let emailAlunoIsvalid = false;
-let emailProfessorIsvalid = false;
-
-let senhaAlunoIsvalid = false;
-let senhaProfessorIsvalid = false;
-
-let msgError = document.querySelector('#msgError');
-let msgSuccess = document.querySelector('#msgSuccess');
-
-emailAluno.addEventListener('keyup', () => {
-  const emailValue = emailAluno.value;
-  const isValid = validarEmail(emailValue);
-  if (!isValid) {
-    emailAlunoValido.textContent = 'Email inválido!';
-    emailAlunoIsvalid = false;
-  } else {
-    emailAlunoValido.textContent = 'Email válido!';
-    emailAlunoIsvalid = true;
-  }
-});
-
+  });
 
   emailProfessor.addEventListener('keyup', () => {
     const emailValue = emailProfessor.value;
@@ -70,45 +35,56 @@ emailAluno.addEventListener('keyup', () => {
     }
   });
 
+  senhaAluno.addEventListener('keyup', () => {
+    senhaAlunoValido.style.visibility = 'visible';
 
-senhaAluno.addEventListener('keyup', () => {
-  senhaAlunoValido.style.visibility = 'visible';
-
-  if (senhaAluno.value.length < 6) {
-    senhaAlunoValido.textContent = 'Senha inválida!';
-    senhaAlunoIsvalid = false;
-  } else {
-    senhaAlunoValido.textContent = 'Senha válida!';
-    senhaAlunoIsvalid = true;
-  }
-});
-
-senhaProfessor.addEventListener('keyup', () => {
-  senhaProfessorValido.style.visibility = 'visible';
-
-  if (senhaProfessor.value.length < 6) {
-    senhaProfessorValido.textContent = 'Senha inválida!';
-    senhaProfessorIsvalid = false;
-  } else {
-    senhaProfessorValido.textContent = 'Senha válida!';
-    senhaProfessorIsvalid = true;
-  }
-});
-
-function loginAluno(e) {
-  e.preventDefault();
-  firebase.auth().signInWithEmailAndPassword().then(response => {
-    console.log("sucesso", response);
-  }).catch(error => {
-    console.log("erro", error);
+    if (senhaAluno.value.length < 6) {
+      senhaAlunoValido.textContent = 'Senha inválida!';
+      senhaAlunoIsvalid = false;
+    } else {
+      senhaAlunoValido.textContent = 'Senha válida!';
+      senhaAlunoIsvalid = true;
+    }
   });
-}
 
-function loginProfessor(e) {
-  e.preventDefault();
-  if (emailProfessorIsvalid && senhaProfessorIsvalid) {
-    redirect('/ReservaProfessor');
-  } else {
-    msgError.textContent = 'Email ou senha inválidos!';
+  senhaProfessor.addEventListener('keyup', () => {
+    senhaProfessorValido.style.visibility = 'visible';
+
+    if (senhaProfessor.value.length < 6) {
+      senhaProfessorValido.textContent = 'Senha inválida!';
+      senhaProfessorIsvalid = false;
+    } else {
+      senhaProfessorValido.textContent = 'Senha válida!';
+      senhaProfessorIsvalid = true;
+    }
+  });
+
+  function loginAluno(e) {
+    e.preventDefault();
+    const email = emailAluno.value;
+    const password = senhaAluno.value;
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .then(response => {
+        window.location.href = '/reservaAluno/index.html';
+      })
+      .catch(error => {
+        msgError.textContent = error;
+      });
   }
-}
+
+  function loginProfessor(e) {
+    e.preventDefault();
+    const email = emailProfessor.value;
+    const senha = senhaProfessor.value;
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(email, senha)
+      .then(response => {
+        window.location.href = '/reservaProfessor/index.html';
+      })
+      .catch(error => {
+        msgError.textContent = error;
+      });
+  };
