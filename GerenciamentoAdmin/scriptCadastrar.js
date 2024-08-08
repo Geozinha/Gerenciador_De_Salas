@@ -7,6 +7,16 @@ class Sala {
     this.tipoSala = tipoSala;
     this.predio = predio;
   }
+  toFirestoreObject() {
+    return {
+      id: this.id,
+      nome: this.nome,
+      descricao: this.descricao,
+      capacidade: this.capacidade,
+      tipoSala: this.tipoSala,
+      predio: this.predio
+    };
+  }
 }
 
 const form = {
