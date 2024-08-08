@@ -47,30 +47,6 @@ const formularioCadastroSala = document.getElementById('form-cadastro-sala');
 const formularioReservaSala = document.getElementById('form-reserva-sala');
 const listaReserva = document.getElementById('lista-reservas');
 
-class gerenciadorSala {
-  ReservarSala = [];
-
-  adicionarReserva(reserva) {
-    this.ReservarSala.push(reserva);
-    this.salvarReserva();
-  }
-
-  getReservaporID(id) {
-    return this.ReservarSala.find(reserva => reserva.id === id);
-  }
-
-  removerReserva(id) {
-    const index = this.ReservarSala.findIndex(reserva => reserva.id === id);
-    if (index !== -1) {
-      this.ReservarSala.splice(index, 1);
-      this.salvarReserva;
-    }
-  }
-
-}
-
-const gerenciador = new gerenciadorSala();
-
 function atualizarAsOpcaoSAla() {
   const selecaoSala = document.getElementById('sala');
   selecaoSala.innerHTML = '';

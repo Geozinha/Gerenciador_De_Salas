@@ -48,17 +48,4 @@ document.getElementById("form-cadastro-sala").addEventListener("submit", (e) => 
 });
 
 
-function exibirSalaCadastrada(sala) {
-  const listaReservas = document.getElementById("lista-reservas");
-  const ul = document.createElement("ul");
-  ul.innerHTML = `
-            <span><strong>Sala:</strong> ${sala.nome}</span> <br>
-            <span><strong>Descrição:</strong> ${sala.descricao}</span> <br>
-            <span><strong>Quantidade de Alunos:</strong> ${sala.capacidade}</span> <br>
-            <span><strong>Tipo de sala:</strong> ${sala.tipoSala}</span> <br>
-            <span><strong>Prédio:</strong> ${sala.predio}</span>  <br>        
-            <button class="btn-editar-reserva" data-reserva-id="${sala.id}">Editar</button>
-            <button class="btn-remover-reserva" data-reserva-id="${sala.id}">Remover</button>
-        `;
-  listaReservas.appendChild(ul);
-}
+exibirSalaCadastrada();
