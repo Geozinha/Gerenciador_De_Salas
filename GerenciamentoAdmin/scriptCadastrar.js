@@ -61,31 +61,4 @@ function exibirSalaCadastrada(sala) {
             <button class="btn-remover-reserva" data-reserva-id="${sala.id}">Remover</button>
         `;
   listaReservas.appendChild(ul);
-  
-  document.addEventListener("click", (e) => {
-    if (e.target.classList.contains("btn-remover-reserva")) {
-      const salaId = e.target.getAttribute("data-reserva-id");
-      removerSala(salaId);
-    }
-  });
-
-  document.addEventListener("click", (e) => {
-    if (e.target.classList.contains("btn-editar-reserva")) {
-      const salaId = e.target.getAttribute("data-reserva-id");
-  
-      const novosDados = {
-        nome: form.nome().value,
-        descricao: form.descricao().value,
-        capacidade: form.capacidade().value,
-        tipoSala: form.tipoSala().value,
-        predio: form.predio().value
-      };
-  
-      editarSala(salaId, novosDados);
-    }
-  });
-}
-
-function limparFormulario() {
-  document.getElementById("form-cadastro-sala").reset();
 }

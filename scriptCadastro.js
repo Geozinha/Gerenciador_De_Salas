@@ -1,4 +1,31 @@
-  const emailAluno = document.querySelector('#emailAluno');
+class login {
+  constructor(email, senha) {
+    this.senha = senha;
+    this.email = email;
+
+    if (!validarEmail(email)) {
+      throw new Error('Email inválido!');
+    }
+  }
+  getSenha() {
+    return this.senha;
+  }
+  getEmail() {
+    return this.email;
+  }
+
+  setSenha(novaSenha) {
+    this.senha = novaSenha;
+  }
+  setEmail(novoEmail) {
+    if (validarEmail(novoEmail)) {
+      this.email = novoEmail;
+    } else {
+      throw new Error('Novo email inválido!');
+    }
+  }
+}
+const emailAluno = document.querySelector('#emailAluno');
   const emailAlunoValido = document.querySelector('#emailAlunoValido');
   const senhaAluno = document.querySelector('#senhaAluno');
   const senhaAlunoValido = document.querySelector('#senhaAlunoValido');
@@ -16,10 +43,8 @@
     const isValid = validarEmail(emailValue);
     if (!isValid) {
       emailAlunoValido.textContent = 'Email inválido!';
-      emailAlunoIsvalid = false;
     } else {
       emailAlunoValido.textContent = 'Email válido!';
-      emailAlunoIsvalid = true;
     }
   });
 
@@ -28,10 +53,8 @@
     const isValid = validarEmail(emailValue);
     if (!isValid) {
       emailProfessorValido.textContent = 'Email inválido!';
-      emailProfessorIsvalid = false;
     } else {
       emailProfessorValido.textContent = 'Email válido!';
-      emailProfessorIsvalid = true;
     }
   });
 
@@ -40,10 +63,8 @@
 
     if (senhaAluno.value.length < 6) {
       senhaAlunoValido.textContent = 'Senha inválida!';
-      senhaAlunoIsvalid = false;
     } else {
       senhaAlunoValido.textContent = 'Senha válida!';
-      senhaAlunoIsvalid = true;
     }
   });
 
@@ -52,10 +73,8 @@
 
     if (senhaProfessor.value.length < 6) {
       senhaProfessorValido.textContent = 'Senha inválida!';
-      senhaProfessorIsvalid = false;
     } else {
       senhaProfessorValido.textContent = 'Senha válida!';
-      senhaProfessorIsvalid = true;
     }
   });
 
@@ -87,4 +106,4 @@
       .catch(error => {
         msgError.textContent = error;
       });
-  };
+  }
